@@ -1,0 +1,39 @@
+/* Defining a base behavior for the h1 tag */
+	h1 {
+		/* Set the default color to blue */
+		color: blue;
+		/* default font is serif */
+		font-family: serif;
+		/* default size is 12pt */
+		font-size: 12pt;
+	}
+
+/* When page is at or greater than 750px, use a new style */
+@media (min-width: 750px) {
+	h1 {
+		/* Set color to gray */
+		color: gray;
+		/* Set font to sans-serif */
+		font-family: san-serif;
+		/* Set size to 14pt */
+		font-size: 14pt;
+		/* center the text */
+		text-align: center;
+	}
+}
+
+/* When page is at or greater than 750px, use a third style */
+@media (min-width: 1000px) {
+	h1 {
+		/* Set color to black */
+		color: black;
+		/* Use monospace font*/
+		font-family: monospace;
+		/* Set size to 16pt */
+		font-size: 16pt;
+		/* border text in blue */
+		border: 1px solid blue;
+		/* pad the inside of the border */
+		padding: 5px 5px 5px 5px;
+	}
+}

@@ -1,0 +1,32 @@
+body { 
+  padding-top: 70px; 
+}
+
+.project {
+  font-weight: bold;
+}
+.portfolio {
+  padding-top: 70px;
+}
+
+.bottom-portfolio{
+  padding-top: 20px;
+}
+
+.programming {
+  padding-top: 70px;
+}
+
+.me {
+  height: 200px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 50%;
+  border: 10px solid gray;
+  
+}
+
+#more {
+margin-top: 20px;
+}
