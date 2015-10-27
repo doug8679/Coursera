@@ -1,0 +1,17 @@
+<div class="row">
+
+    {{#each albums}}
+    <div class="col-xs-12 col-md-3"> 
+        <div class="album-thumbnail"  data-id="{{@index}}">
+          <img class="crop-img" src="{{thumbnail}}" alt=""/> 
+            
+          <div class="caption">
+              <h4> {{name}} </h4>
+              <p>{{photos.length}} photos</p>
+          </div>
+         </div>
+    </div> <!-- / col -->
+
+    {{/each}}
+
+  </div> <!-- / row -->

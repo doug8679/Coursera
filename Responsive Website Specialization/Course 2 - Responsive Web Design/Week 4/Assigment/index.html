@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- This is a first example of using a template -->
+
+<head>
+
+<!-- include our libraries and css files -->
+
+<script src="js/jquery-2.1.4.min.js"></script>
+<script src="js/handlebars-v3.0.3.js"></script>
+
+<script src="js/bootstrap.min.js"></script>
+<script src="AnimalsData.js"></script>
+<script src="assignment.js"></script>
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="assignment.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <!-- put your HTML here -->
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Brand</a>
+			</div>
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav"
+					<li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+					<li><a href="#">Link</a></li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Action</a></li>
+							<li><a href="#">Another action</a></li>
+							<li><a href="#">Something else here</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="#">Separated link</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="#">One more separated link</a></li>
+						</ul>
+					</li>
+				</ul>
+				<form class="navbar-form navbar-left" role="search">
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="Search">
+					</div>
+					<button type="submit" class="btn btn-default">Submit</button>
+				</form>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#">Link</a></li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Action</a></li>
+							<li><a href="#">Another action</a></li>
+							<li><a href="#">Something else here</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="#">Separated link</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div><!-- /.navbar-collapse -->
+		</div><!-- /.container-fluid -->
+	</nav>
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 col-s-6 col-md-4">
+				<div class="panel-group" id="accordian" role="tablist" aria-multiselectable="true">
+				</div>
+			</div>
+			<div class="col-xs-12 col-s-6 col-md-8">
+				<!-- This content div will be filled by the javascript and templates -->
+				<div id="content" class="container-fluid" role="main">&nbsp;</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- The template for displaying the classes of animals on this site -->
+	<script id="class-template" type="text/x-handlebars-template">
+		{{#each class}}
+		<div class="panel panel-default">
+			<div class="panel-heading" role="tab" id="heading{{@index}}">
+				<h4 class="panel-title">
+					<a class="class-link" role="button" data-id="{{@index}}" data-toggle="collapse" data-parent="#accordian" href="#collapse{{@index}}" aria-expanded="false" aria-controls="collapse{{@index}}">
+						{{name}}
+					</a>
+				</h4>
+			</div>
+			<div id="collapse{{@index}}" class="panel-collapse collapse" role="tabpanel" aria-labeledby="heading{{@index}}">
+				<div class="panel-body">
+					<ul>
+						{{#each animals}}
+						<li><a href="#" class="animal-link" data-id="{{@index}}">{{name}}</a></li>
+						{{/each}}
+					</ul>
+				</div>
+			</div>
+		</div>
+		{{/each}}
+	</script>
+	
+	<!-- The template for rendering the animals within a classification -->
+	<script id="animal-template" type="text/x-handlebars-template">
+	</script>
+	
+</body>
+
+</html>
