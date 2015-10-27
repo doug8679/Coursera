@@ -10,6 +10,24 @@ function showTemplate(template, data) {
 	$('#content').html(html);
 }
 
+function selectClass(event) {
+	// do something…
+	current_class = classes.class[$(event.target).data('id')];
+	console.log('Something was opened: ' + current_class.name);
+	
+	// Display further instructions
+	$("#content").html("Select a species of " + current_class.name + " to display more information.");
+	
+	// Assign click handlers on the links of class animalType
+	$(".animalType").click(selectAnimal);
+}
+
+function selectAnimal() {
+	console.log('Clicked on an animal link.');
+	current_animal = current_class.animals[$(this).data("id")];
+	showTemplate(animalTemplate, current_animal);
+}
+
 $(document).ready(function() {
 	
 	// Compile the template first:
@@ -19,25 +37,12 @@ $(document).ready(function() {
 	source = $("#animal-template").html();
 	animalTemplate = Handlebars.compile(source);
 	
-	// Clicking on the classes link shows the
+	// Clicking on a class link shows the
 	// classifications of animal available to view
-	$(".class-link").click(function(){
-		console.log('Selected: ' + $(this).data("id"));
-		current_class = classes[$(this).data("id")];
-		// Display the classes template:
-		//showTemplate(classTemplate, classes);
-		
-		// Set the classes link as active
-		// turn of the currently active link first
-		//$(".active").removeClass("active");
-		// Now activate the link we want:
-		//$("#classes-tab").addClass("active");
-	});
+	$('#accordian').on('show.bs.collapse', selectClass);
 	
-	$(".animal-link").click(function(){
-		console.log('Clicked on an animal link.');
-		current_animal = current_class.animals[$(this).data("id")];
-	})
+	$(".classHeader").click(selectClass);
+	
 	console.log(classTemplate(classes));
 	$("#accordian").html(classTemplate(classes));
 });

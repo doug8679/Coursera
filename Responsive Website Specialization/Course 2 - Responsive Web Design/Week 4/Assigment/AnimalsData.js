@@ -52,7 +52,7 @@ var classes = {
 				}, 
 				{	
 					image1 : "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Diademed_ready_to_push_off.jpg/440px-Diademed_ready_to_push_off.jpg",
-					image2 : "https://en.wikipedia.org/wiki/File:Three_chimpanzees_with_apple.jpg",
+					image2 : "https://upload.wikimedia.org/wikipedia/commons/3/34/Three_chimpanzees_with_apple.jpg",
 					name : "Primate", 
 					description : "A primate is a mammal of the order Primates (Listeni/praɪˈmeɪtiːz/ pry-may-teez; Latin: \"prime, first rank\"). In taxonomy, primates include two distinct lineages, strepsirrhines and haplorhines. Primates arose from ancestors that lived in the trees of tropical forests; many primate characteristics represent adaptations to life in this challenging three-dimensional environment. Most primate species remain at least partly arboreal. With the exception of humans, who inhabit every continent, most primates live in tropical or subtropical regions of the Americas, Africa and Asia.[4] They range in size from Madame Berthe's mouse lemur, which weighs only 30 g (1 oz), to the eastern lowland gorilla, weighing over 200 kg (440 lb). Based on fossil evidence, the earliest known true primates, represented by the genus Teilhardina, date to 55.8 million years old.[5] An early close primate relative known from abundant remains is the Late Paleocene Plesiadapis, circa 55–58 million years old.[6] Molecular clock studies suggest that the primate branch may be even older, originating near the Cretaceous–Paleogene boundary or around 63-74 mya"
 				}, 
