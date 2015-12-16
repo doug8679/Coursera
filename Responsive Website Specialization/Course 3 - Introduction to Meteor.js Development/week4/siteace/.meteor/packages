@@ -22,3 +22,5 @@ twbs:bootstrap
 accounts-password
 accounts-ui
 momentjs:moment
+iron:router
+multiply:iron-router-progress
