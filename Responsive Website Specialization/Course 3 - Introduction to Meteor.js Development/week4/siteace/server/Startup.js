@@ -34,4 +34,25 @@ Meteor.startup(function () {
 			comment: "Eh, it's okay..."
 		});
     }
-  });
+  
+    var cheerio = Meteor.npmRequire('cheerio');
+	var getMeta = Meteor.npmRequire('lets-get-meta');
+  
+Meteor.methods({
+	checkURL: function(url) {
+		this.unblock();
+		var result = HTTP.get(url);
+		console.log(result);
+		console.log();
+		console.log("Processing document content...");
+		var meta = getMeta(result.content);
+		$ = cheerio.load(result.content);
+		console.log($("title").html());
+		meta.title = $("title").html();
+		console.log(meta);
+		return meta;
+	}
+});
+
+});
+  
