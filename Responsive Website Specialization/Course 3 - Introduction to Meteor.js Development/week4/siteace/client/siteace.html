@@ -45,7 +45,9 @@
 
 <template name="main">
 	<div class="container">
-		{{> website_form}}
+		{{#if currentUser}}
+			{{> website_form}}
+		{{/if}}
 		{{> website_list}}
 	</div>
 </template>
@@ -111,7 +113,7 @@
 	<p>
 		{{description}}
 	</p>
-	<p>Added on: {{formatDate createdOn}}</p>
+	<p>Added on: {{formatDate createdOn}} by {{getUser createdBy}}</p>
 	<a href="#" class="btn btn-default js-upvote">
 		<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
 		<span class="label label-success">{{upvotes}}</span>
@@ -121,16 +123,28 @@
 		<span class="label label-danger">{{downvotes}}</span>
 	</a>
 	</div>
-	{{#each comments _id}}
-	{{>comment_item}}
-	{{/each}}
+	<div class="row">
+		<div class="col-md-1"></div>
+		<div class="col-xs-12 col-md-10">
+			{{#each comments _id}}
+				{{>comment_item}}
+			{{/each}}
+		</div>
+		<div class="col-md-1"></div>
+	</div>
 	<!-- you will be putting your up and down vote buttons in here! -->
 </div>
 </template>
 <template name="comment_item">
 	<div class="panel panel-primary">
-		<h3>{{title}}</h3>
-		<p>{{comment}}</p>
-		<p>Submitted By: {{user}} on {{formatDate createdOn}}</p>
+		<div class="panel-heading">
+			{{user}} says:
+		</div>
+		<div class="panel-body">
+			<p>{{comment}}</p>
+		</div>
+		<div class="panel-footer">
+			<p>Submitted on {{formatDate createdOn}}</p>
+		</div>
 	</div>
 </template>

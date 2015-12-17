@@ -24,3 +24,4 @@ accounts-ui
 momentjs:moment
 iron:router
 multiply:iron-router-progress
+http

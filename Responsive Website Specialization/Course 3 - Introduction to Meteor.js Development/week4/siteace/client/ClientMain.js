@@ -44,9 +44,17 @@ Template.registerHelper('formatDate', function(date){
 	Template.website_detail.helpers({
 			comments:function(site_id){
 				return Comments.find({siteId: site_id}, {sort: {createdOn: -1}});
+			},
+			getUser:function(user_id){
+				var user = Meteor.users.findOne({_id:user_id});  
+				if (user){
+					return user.username;
+				} else {
+					return "anon";
+				}
 			}
 	});
-
+	
 
 	/////
 	// template events 
@@ -117,12 +125,32 @@ Template.registerHelper('formatDate', function(date){
 
 			// here is an example of how to get the url out of the form:
 			var url = event.target.url.value;
+			var title = event.target.title.value;
+			var descr = event.target.title.value;
 			console.log("The url they entered is: "+url);
 			
 			//  put your website saving code in here!	
-
+			if (Meteor.user()) {
+				Websites.insert({
+					url:url,
+					title:title,
+					description:descr,
+					createdOn:new Date(),
+					createdBy:Meteor.user()._id
+				});
+			}
+			$("#website_form").toggle('slow');
 			return false;// stop the form submit from reloading the page
-
+		},
+		"keyup #url": function(event) {
+			HTTP.call('GET', event.target.value, {}, function(error, response){
+				//if (error) {
+					console.log(error);
+			//} else {
+					console.log(response);
+		//}
+			});
+			//console.log(event.target.value);
 		}
 	});
 	
