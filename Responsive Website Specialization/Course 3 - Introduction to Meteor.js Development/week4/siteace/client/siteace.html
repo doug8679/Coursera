@@ -121,7 +121,7 @@
 		<span class="label label-danger">{{downvotes}}</span>
 	</a>
 	</div>
-	{{#each comments}}
+	{{#each comments _id}}
 	{{>comment_item}}
 	{{/each}}
 	<!-- you will be putting your up and down vote buttons in here! -->

@@ -26,5 +26,12 @@ Meteor.startup(function () {
     		description:"Popular search engine.", 
     		createdOn:new Date()
     	});
+		
+		var site = Websites.findOne({title: "Google"});
+		Comments.insert({
+			siteId: site._id,
+			createdOn: new Date(),
+			comment: "Eh, it's okay..."
+		});
     }
   });

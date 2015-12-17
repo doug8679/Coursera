@@ -40,28 +40,53 @@ Template.registerHelper('formatDate', function(date){
 			return Websites.find({}, {sort:{upvotes: -1, downvotes: -1}});         
 		}
 	});
+	
+	Template.website_detail.helpers({
+			comments:function(site_id){
+				return Comments.find({siteId: site_id}, {sort: {createdOn: -1}});
+			}
+	});
 
 
 	/////
 	// template events 
 	/////
+	
+	Template.website_detail.events({
+		"click .js-upvote":function() {
+			// example of how you can access the id for the website in the database
+		// (this is the data context for the template)
+		var website_id = this._id;
+		console.log("Up voting website with id "+website_id);
+		// put the code in here to add a vote to a website!
+		var site = Websites.findOne({_id:website_id});
+		if (site.upvotes) {
+			Websites.update({_id:website_id},
+			{$set: {upvotes:++site.upvotes}});
+		} else {
+			Websites.update({_id:website_id},
+			{$set: {upvotes:1}});
+		}
+		return false;// prevent the button from reloading the page
+		}
+	})
 
 	Template.website_item.events({
-		"click .js-upvote":function(event){
+		"click .js-upvote":function() {
 			// example of how you can access the id for the website in the database
-			// (this is the data context for the template)
-			var website_id = this._id;
-			console.log("Up voting website with id "+website_id);
-			// put the code in here to add a vote to a website!
-			var site = Websites.findOne({_id:website_id});
-			if (site.upvotes) {
-				Websites.update({_id:website_id},
-				  {$set: {upvotes:++site.upvotes}});
-			} else {
-				Websites.update({_id:website_id},
-				  {$set: {upvotes:1}});
-			}
-			return false;// prevent the button from reloading the page
+		// (this is the data context for the template)
+		var website_id = this._id;
+		console.log("Up voting website with id "+website_id);
+		// put the code in here to add a vote to a website!
+		var site = Websites.findOne({_id:website_id});
+		if (site.upvotes) {
+			Websites.update({_id:website_id},
+			{$set: {upvotes:++site.upvotes}});
+		} else {
+			Websites.update({_id:website_id},
+			{$set: {upvotes:1}});
+		}
+		return false;// prevent the button from reloading the page
 		}, 
 		"click .js-downvote":function(event){
 
@@ -100,3 +125,8 @@ Template.registerHelper('formatDate', function(date){
 
 		}
 	});
+	
+	/// event functions
+	function UpVote(event) {
+		
+	}
